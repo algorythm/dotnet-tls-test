@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: ./src/tls-test.api
+    ports:
+      - "7077:8443"
+    volumes:
+      - "./src/tls-test.api/certs:/https:ro"
+    environment:
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/dev.pfx
+      ASPNETCORE_Kestrel__Certificates__Default__Password: ${TLS_PASSWORD}
+    restart: "no"
