@@ -5,7 +5,7 @@ A minimal .NET 9 web API that serves HTTPS with a self-signed certificate.
 Supports:
 
 * **Docker**: mouts a single `dev.pfx` file and listens on <https://localhost:7077>
-* **Local ohst**: runs Kestrel with the same `dev.pfx` file
+* **Local host**: runs Kestrel with the same `dev.pfx` file
 
 This repo assumes the following layout:
 
