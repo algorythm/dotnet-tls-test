@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/tls-test.api/tls-test.api.csproj" />
+  </Folder>
+</Solution>
