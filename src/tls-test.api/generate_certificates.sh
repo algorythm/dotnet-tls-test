@@ -8,7 +8,7 @@ OU="${3:-Dev}"
 PFX_PASS="${4:-changeit}"
 DAYS="${5:-825}" # ~27 months
 
-OUT_DIR="certs"
+OUT_DIR="${0%/*}/certs"
 KEY="$OUT_DIR/dev.key"
 CSR="$OUT_DIR/dev.csr"
 CRT="$OUT_DIR/dev.crt"
