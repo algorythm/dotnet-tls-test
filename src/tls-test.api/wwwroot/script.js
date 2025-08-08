@@ -1,4 +1,6 @@
-async function loadWeather() {
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+async function getWeather() {
     try {
         const response = await fetch('/weather');
         if (response.status === 200) {
@@ -20,11 +22,11 @@ function replaceWeather(innerHtml) {
     weatherDocument.innerHTML = innerHtml;
 }
 
-async function main() {
-    const weather = await loadWeather();
+async function fetchLatestWeather() {
+    const weather = await getWeather();
     if (!weather){
         replaceWeather('<p class="notice">ERROR: failed to fetch latest weather report.</p>');
-        return;
+        throw new Error('API Failed');
     }
     
     let table = "<table>"
@@ -44,6 +46,17 @@ async function main() {
     
     table+="</tbody></table>";
     replaceWeather(table);
+}
+
+async function main() {
+    while(true) {
+        try {
+            await fetchLatestWeather();
+            await delay(2000);
+        } catch(e) {
+            break;
+        }
+    }
 }
 
 main().catch(e => console.error('Uncaught error', e));
